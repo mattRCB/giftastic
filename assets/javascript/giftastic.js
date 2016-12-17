@@ -28,6 +28,20 @@ $(document).ready(function() {
 	}; // function addTopicButton
 
 
+	function displayGifs(respObject) {
+		// NEED TO DISPLAY RATINGS.
+		$('#animals').empty();
+		for (i=0; i < 10; i++) {
+			var source = respObject.data[i].images.fixed_height_still.url;
+			var srcAnimated = respObject.data[i].images.fixed_height.url;
+			var srcStill = respObject.data[i].images.fixed_height_still.url;
+			var gif = $("<img>").addClass("gif").attr("data-still", srcStill).attr("data-animate", srcAnimated).attr("data-state", "still").attr("src", source);
+			console.log(gif);
+			$('#animals').append(gif);
+		}
+	}; // function displayGifs()
+
+
 	$('#addAnimal').on('click', function(event){
 		event.preventDefault();
 
@@ -35,6 +49,7 @@ $(document).ready(function() {
 	}); // on click addAnimal
 
 
+	// on.click call api.
 	$(document).on('click', 'button.topic', function() {
 		var queryURL = giphyBaseURL;
 		params['q'] = $(this).text();
@@ -46,18 +61,42 @@ $(document).ready(function() {
 		}).done(function(response) {
 		  console.log(response);
 		  displayGifs(response);
-		});
-
+		}); // ajax call
 	}); // on.click button.topic
 
 
-	function displayGifs(respObject) {
-		console.log("so display the gifs, dude.")
-		console.log("Is this the img src url? " + respObject.data[0].images.fixed_height.url);
-		var source = respObject.data[0].images.fixed_height.url;
-		var gif = $("<img>").attr("src", source);
-		console.log(gif);
-		$('#animals').append(gif);
-	}; // function displayGifs()
+	// on.click TOGGLES IMAGES BETWEEN 'animate' and 'still'.
+	$(document).on('click', '.gif', function() {
+		var state = $(this).attr("data-state");
 
+		if (state === "still") {
+			$(this).attr("src", $(this).data("animate"));
+			$(this).attr("data-state", "animate");
+		} else {
+			$(this).attr("src", $(this).data("still"));
+			$(this).attr("data-state", "still");
+		}
+	}); // on.click .gif (toggle animation)
 }); // document.ready()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
