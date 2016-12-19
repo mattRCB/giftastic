@@ -1,0 +1,21 @@
+#scrollLeft {
+	float: right;
+}
+#scrollRight {
+	float: left;
+}
+#animalButtons {
+/*	display: inline-block;
+*/	white-space: nowrap;
+/*	overflow-x: scroll;
+    overflow-y: hidden;*/
+    overflow: auto;
+    height: 36px;
+    margin-left: 24px;
+    margin-right: 24px;
+}
+.topic {
+	dislplay: inline-block;
+}
+
+

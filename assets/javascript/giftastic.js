@@ -3,7 +3,7 @@ $(document).ready(function() {
 	var giphyBaseURL = "http://api.giphy.com/v1/gifs/search";
 	var giphyKey = "dc6zaTOxFJmzC";
 	var params = {};
-	var topics = ['dog', 'cat', 'rabbit', 'hamster', 'skunk', 'goldfish', 'bird', 'turtle'];
+	var topics = ['dog', 'cat', 'rabbit', 'hamster', 'skunk', 'goldfish', 'bird', 'turtle', 'rhino', 'hippo', 'elephant', 'lemur', 'giraffe', 'penguin', 'ostrich', 'lemur', 'grasshopper'];
 
 	params['api_key'] = giphyKey;
 
@@ -14,6 +14,7 @@ $(document).ready(function() {
 		$('#animalButtons').empty();
 		for (var i=0; i < topics.length; i++) {
 			var buttonNew = $('<button>').addClass('topic').text(topics[i]);
+			$('#animal-input').val("").blur(); // empties the text field.
 			$('#animalButtons').append(buttonNew);
 		}
 	};
@@ -29,7 +30,7 @@ $(document).ready(function() {
 
 
 	function displayGifs(respObject) {
-		// NEED TO DISPLAY RATINGS.
+		// NEED TO DISPLAY RATINGS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		$('#animals').empty();
 		for (i=0; i < 10; i++) {
 			var source = respObject.data[i].images.fixed_height_still.url;
@@ -77,26 +78,27 @@ $(document).ready(function() {
 			$(this).attr("data-state", "still");
 		}
 	}); // on.click .gif (toggle animation)
+
+	// buttons for horizontally scrolling the tpoic buttons
+	$(document).on('click', '#scrollLeft', function() {
+		$('#animalButtons').animate( {scrollLeft: '+=250'} );
+		console.log('scroll left');
+	});
+	$(document).on('click', '#scrollRight', function() {
+		$('#animalButtons').animate( {scrollLeft: '-=250'} );
+		console.log('scroll left');
+	});
+
+
+
+
+
+
+
+
+
+
+
+
+
 }); // document.ready()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
