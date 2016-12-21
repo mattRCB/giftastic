@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	console.log("Its alive");
-	var giphyBaseURL = "http://api.giphy.com/v1/gifs/search";
+	var giphyBaseURL = "https://api.giphy.com/v1/gifs/search";
 	var giphyKey = "dc6zaTOxFJmzC";
 	var params = {};
 	var topics = ['dog', 'cat', 'owl', 'turtle', 'rhino', 'hippo', 'elephant', 'lemur', 'giraffe', 'penguin', 'panda', 'ostrich', 'lemur', 'grasshopper', 'koala', 'emu', 'donkey', 'horse', 'alpaca', 'rabbit', 'hamster', 'skunk', 'bonobo', 'chimpanzee', 'gorilla', 'monkey', 'orangatan','falcon', 'eagle', 'goldfish', 'crow', 'raven'];
