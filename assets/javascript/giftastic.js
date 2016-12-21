@@ -3,7 +3,7 @@ $(document).ready(function() {
 	var giphyBaseURL = "http://api.giphy.com/v1/gifs/search";
 	var giphyKey = "dc6zaTOxFJmzC";
 	var params = {};
-	var topics = ['dog', 'cat', 'rabbit', 'hamster', 'skunk', 'goldfish', 'bird', 'turtle', 'rhino', 'hippo', 'elephant', 'lemur', 'giraffe', 'penguin', 'ostrich', 'lemur', 'grasshopper'];
+	var topics = ['dog', 'cat', 'owl', 'turtle', 'rhino', 'hippo', 'elephant', 'lemur', 'giraffe', 'penguin', 'panda', 'ostrich', 'lemur', 'grasshopper', 'koala', 'emu', 'donkey', 'horse', 'alpaca', 'rabbit', 'hamster', 'skunk', 'bonobo', 'chimpanzee', 'gorilla', 'monkey', 'orangatan','falcon', 'eagle', 'goldfish', 'crow', 'raven'];
 
 	params['api_key'] = giphyKey;
 
@@ -21,9 +21,11 @@ $(document).ready(function() {
 
 
 	function addTopicButton() {
-		console.log("Add topic button: ");
-		topics.push($('#animal-input').val().trim());
-		console.log(topics);
+		if (($('#animal-input').val().trim()) != "") {
+			topics.push($('#animal-input').val().trim());
+			console.log(topics);
+			$('#animalButtons').animate({scrollLeft: ($('#animalButtons').width() + 1000) }, 800);
+		}
 
 		displayTopicButtons();
 	}; // function addTopicButton
@@ -36,9 +38,10 @@ $(document).ready(function() {
 			var source = respObject.data[i].images.fixed_height_still.url;
 			var srcAnimated = respObject.data[i].images.fixed_height.url;
 			var srcStill = respObject.data[i].images.fixed_height_still.url;
+			var gifHolder = $('<div>').addClass("gifHolder").html("<h3>Rating: " + respObject.data[i].rating + "</h3>");
 			var gif = $("<img>").addClass("gif").attr("data-still", srcStill).attr("data-animate", srcAnimated).attr("data-state", "still").attr("src", source);
-			console.log(gif);
-			$('#animals').append(gif);
+			gifHolder.append(gif);
+			$('#animals').append(gifHolder);
 		}
 	}; // function displayGifs()
 
@@ -78,8 +81,9 @@ $(document).ready(function() {
 			$(this).attr("data-state", "still");
 		}
 	}); // on.click .gif (toggle animation)
+	
 
-	// buttons for horizontally scrolling the tpoic buttons
+	// buttons for horizontally scrolling the topic buttons
 	$(document).on('click', '#scrollLeft', function() {
 		$('#animalButtons').animate( {scrollLeft: '+=250'} );
 		console.log('scroll left');
@@ -88,17 +92,5 @@ $(document).ready(function() {
 		$('#animalButtons').animate( {scrollLeft: '-=250'} );
 		console.log('scroll left');
 	});
-
-
-
-
-
-
-
-
-
-
-
-
 
 }); // document.ready()

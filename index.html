@@ -2,27 +2,30 @@
 <html>
 <head>
 	<title>GifTastic!</title>
+	<link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 </head>
 <body>
-	<button class="scroll" id="scrollRight">&#8678;</button>
-	<button class="scroll" id="scrollLeft">&#8680;</button>
+	<div id="container">
+		<button class="scroll" id="scrollRight">&#8678;</button>
+		<button class="scroll" id="scrollLeft">&#8680;</button>
 
-	<div id="animalButtons">
-	</div>
+		<div id="animalButtons">
+		</div>
 
+		<div id="formWrapper">
+			<form id="animal-form">
+				<label class="formItem" for='animal-input'>Add an animal</label>
+				<input class="formItem" type='text' id='animal-input'><br>
+				<input class="formItem" type="submit" id="addAnimal" value="submit">
+			</form>
+		</div>
 
-
-	<form id="animal-form">
-		<label for='animal-input'>Add an animal</label>
-		<input type='text' id='animal-input'><br>
-		<input type="submit" id="addAnimal" value="submit">
-	</form>
-
-
-	<div id="animals">
-	</div>
-
+		<div id="animals"></div>
+		<footer>
+			<img src="./assets/images/PoweredBy_200px-Black_HorizLogo.png">
+		</footer>
+	</div> <!-- container -->
 	<script src='https://code.jquery.com/jquery-2.1.3.min.js'></script>
 	<script type="text/javascript" src="./assets/javascript/giftastic.js"></script>
 </body>
